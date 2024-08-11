@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+</head>
+<body>
+    <h2>Welcome, {{ user.username }}</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>Favorite Food: {{ user.favorite_food }}</p>
+    <p>Favorite Artist: {{ user.favorite_artist }}</p>
+    <p>Favorite Place: {{ user.favorite_place }}</p>
+    <p>Favorite Color: {{ user.favorite_color }}</p>
+    <img src="{{ user.profile_image.url }}" alt="Profile Image" />
+</body>
+</html>
