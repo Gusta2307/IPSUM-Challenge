@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import '../styles/globals.css';
+import Image from '../styles/avatar.png'
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -19,15 +20,24 @@ const Register = () => {
 
     const handleChange = (e) => {
         if (e.target.name === 'profile_image') {
+            const file = e.target.files[0];
             setFormData({
                 ...formData,
-                profile_image: e.target.files[0],
+                profile_image: file,
             });
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                // console.log(document.getElementsByClassName('image-cover'))
+                document.getElementsByClassName('image-cover')[0].src = event.target.result;
+            }
+            reader.readAsDataURL(file);
         } else {
             setFormData({
                 ...formData,
                 [e.target.name]: e.target.value,
             });
+
         }
     };
 
@@ -60,45 +70,54 @@ const Register = () => {
 
     };
 
+    const handleClick = () => {
+        document.querySelector('.input_image').click();
+    };
+
     return (
-        <div>
-            <h2>Register</h2>
+        <div className="card">
+            <h1>Register Form</h1>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Username:</label>
-                    <input type="text" name="username" value={formData.username} onChange={handleChange} required />
+                <div className="profile-image">
+                    <img src={Image} alt="" className="image-cover" onClick={handleClick}/>
+                    <input className="input_image" type="file" accept="image/png, image/jpeg, image/jpg, image/gif" name="profile_image" onChange={handleChange} />
                 </div>
-                <div>
-                    <label>Email:</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+                <label className="input">
+                    <input className="input__field" type="text" placeholder=" " name="username" value={formData.username} onChange={handleChange} required />
+                    <span className="input__label">Username</span>
+                </label>
+                <label className="input">
+                    <input className="input__field" type="email" placeholder=" " name="email" value={formData.email} onChange={handleChange} required />
+                    <span className="input__label">Email</span>
+                </label>
+                <label className="input">
+                    <input className="input__field" type="password" placeholder=" " name="password1" value={formData.password1} onChange={handleChange} required />
+                    <span className="input__label">Password</span>
+                </label>
+                <label className="input">
+                    <input className="input__field" type="password" placeholder=" " name="password2" value={formData.password2} onChange={handleChange} required />
+                    <span className="input__label">Confirm Password</span>
+                </label>
+
+                <div className='container'>
+                    <label className="input">
+                        <input className="input__field" type="text" placeholder=" " name="favorite_food" value={formData.favorite_food} onChange={handleChange} required />
+                        <span className="input__label">Favorite Food</span>
+                    </label >
+                    <label className="input">
+                        <input className="input__field" type="text" placeholder=" " name="favorite_artist" value={formData.favorite_artist} onChange={handleChange} required />
+                        <span className="input__label">Favorite Artist</span>
+                    </label>
                 </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" name="password1" value={formData.password1} onChange={handleChange} required />
-                </div>
-                <div>
-                    <label>Confirm Password:</label>
-                    <input type="password" name="password2" value={formData.password2} onChange={handleChange} required />
-                </div>
-                <div>
-                    <label>Favorite Food:</label>
-                    <input type="text" name="favorite_food" value={formData.favorite_food} onChange={handleChange} required />
-                </div>
-                <div>
-                    <label>Favorite Artist:</label>
-                    <input type="text" name="favorite_artist" value={formData.favorite_artist} onChange={handleChange} required />
-                </div>
-                <div>
-                    <label>Favorite Place:</label>
-                    <input type="text" name="favorite_place" value={formData.favorite_place} onChange={handleChange} required />
-                </div>
-                <div>
-                    <label>Favorite Color:</label>
-                    <input type="text" name="favorite_color" value={formData.favorite_color} onChange={handleChange} required />
-                </div>
-                <div>
-                    <label>Profile Image:</label>
-                    <input type="file" name="profile_image" onChange={handleChange} />
+                <div className="container">
+                    <label className="input">
+                        <input className="input__field" type="text" placeholder=" " name="favorite_place" value={formData.favorite_place} onChange={handleChange} required />
+                        <span className="input__label">Favorite Place</span>
+                    </label>
+                    <label className="input">
+                        <input className="input__field" type="text" placeholder=" " name="favorite_color" value={formData.favorite_color} onChange={handleChange} required />
+                        <span className="input__label">Favorite Color</span>
+                    </label>
                 </div>
                 <button type="submit">Register</button>
             </form>
