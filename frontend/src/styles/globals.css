@@ -174,3 +174,27 @@ button + button {
 .input_image{
     display: none;
 }
+
+.btn {
+  cursor: pointer;
+}
+
+.btn-black{
+  background-color: black;
+  color: white;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  
+}
+
+.link-white{
+  color: white;
+  text-decoration: none;
+}
+
+.login{
+  max-width: 25vw;
+}

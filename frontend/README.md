@@ -1,70 +1,76 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# IPSUM-Challenge Frontend
 
-## Available Scripts
+Este proyecto es el encargado del frontend de la aplicación, desarrollado en **ReactJS**. El frontend se encarga de manejar la interfaz de usuario y la interacción con el backend a través de API. La aplicación está estructurada utilizando un enrutado para las diferentes vistas disponibles.
 
-In the project directory, you can run:
+## Vistas Principales
 
-### `npm start`
+El frontend incluye las siguientes vistas:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Login**: Vista para que los usuarios ingresen sus credenciales y accedan a la aplicación.
+- **Register**: Vista para que los nuevos usuarios se registren en la aplicación.
+- **Profile**: Vista donde los usuarios pueden ver su información personal.
+- **Home**: Página principal que da la bienvenida al usuario y proporciona acceso a las demás funcionalidades.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Funcionalidad
 
-### `npm test`
+### Autenticación
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+El proceso de autenticación incluye las siguientes características:
 
-### `npm run build`
+1. **Registro de Usuario**:
+   - Los nuevos usuarios pueden registrarse proporcionando la información necesaria.
+   - Una vez completado el formulario de registro, se realiza una solicitud **POST** a la API del backend para almacenar los datos del usuario.
+   
+2. **Inicio de Sesión**:
+   - Los usuarios registrados pueden iniciar sesión proporcionando su nombre de usuario y contraseña.
+   - Una solicitud **POST** se envía al backend para autenticar las credenciales del usuario.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Manejo de Sesión**:
+   - Después de la autenticación, se almacena un token de sesión que se utiliza para autorizar las solicitudes a las demás vistas protegidas.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Interacción con el Backend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Cada vista interactúa con el backend utilizando peticiones API:
 
-### `npm run eject`
+- **POST**: Se utiliza para enviar datos (como durante el registro y el inicio de sesión).
+- **GET**: Se utiliza para recuperar datos (como para cargar el perfil del usuario).
+- **PUT/PATCH**: Se utilizan para actualizar datos (como para actualizar el perfil del usuario).
+- **DELETE**: Se utiliza para eliminar recursos (aunque esta funcionalidad depende de la implementación específica del backend).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Tecnologías Utilizadas
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **ReactJS**: Biblioteca de JavaScript para construir la interfaz de usuario.
+- **React Router**: Módulo para manejar el enrutado de la aplicación.
+- **Axios**: Cliente HTTP utilizado para realizar peticiones a la API del backend.
+- **CSS/SCSS**: Utilizado para el estilo y diseño de la interfaz.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Instalación y Configuración
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Clonar el repositorio:**
 
-## Learn More
+   ```bash
+   git clone https://github.com/tu-usuario/IPSUM-Challenge-Frontend.git
+   cd IPSUM-Challenge-Frontend
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. **Instalar dependencias:**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```bash
+   npm install
+   ```
 
-### Code Splitting
+3. **Configurar las variables de entorno:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   Crea un archivo `.env` en la raíz del proyecto y añade las siguientes configuraciones:
+   
+   ```env
+   REACT_APP_API_URL=http://localhost:8000/api  # URL del backend
+   ```
 
-### Analyzing the Bundle Size
+4. **Iniciar la aplicación:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   ```bash
+   npm run start
+   ```
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
